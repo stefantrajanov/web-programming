@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Add Dish to Chef</title>
+    <style>
+        body {
+            width: 800px;
+            margin: auto;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        table, td, th {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        section {
+            float: left;
+            margin: 0 1.5%;
+            width: 63%;
+        }
+        aside {
+            float: right;
+            margin: 0 1.5%;
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Select the Dish to add to the Chef</h1>
+</header>
+<section>
+    <h2>Select dish:</h2>
+    <form action="/chefDetails" method="POST">
+        <ul style="list-style: none">
+            <li th:each="dish: ${dishes}">
+                <input type="radio" name="dishId" th:value="${dish.getDishId()}"/>
+                <label th:text="|${dish.getName()}|"></label>
+            </li>
+        </ul>
+        <input type="submit" value="Add dish">
+    </form>
+</section>
+<aside>
+    <table>
+        <tr>
+            <td><b>Chef ID</b></td>
+            <td th:text="|${chef.getId()}|"></td>
+        </tr>
+        <tr>
+            <td><b>Chef Name</b></td>
+            <td th:text="|${chef.getFirstName()} ${chef.getLastName()}|"></td>
+        </tr>
+    </table>
+</aside>
+</body>
+</html>

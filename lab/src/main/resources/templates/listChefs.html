@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="utf-8">
+    <title>Restaurant Chefs - Welcome to Our Restaurant</title>
+    <style>
+        body {
+            width: 800px;
+            margin: auto;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to Our Restaurant</h1>
+</header>
+<main>
+    <h2>Choose a chef:</h2>
+    <form action="/dish" method="POST">
+        <ul style="list-style: none">
+            <li th:each="chef: ${chefs}">
+                <input type="radio" name="chefId" th:value="${chef.getId()}"/>
+                <label th:text="|Name: ${chef.getFirstName()} ${chef.getLastName()} Bio: ${chef.getBio()}|">                </label>
+            </li>
+        </ul>
+        <input type="submit" value="Submit">
+    </form>
+</main>
+</body>
+</html>
