@@ -32,7 +32,7 @@ public class ChefDetailsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Object chefId = req.getSession().getAttribute("chefId");
         if (chefId == null) {
-            resp.sendRedirect("dish");
+            resp.sendRedirect("/dish");
             return;
         }
 
@@ -42,7 +42,15 @@ public class ChefDetailsServlet extends HttpServlet {
 
         WebContext context = new WebContext(webExchange);
 
-        Chef chef = chefService.findById(Long.parseLong(chefId.toString()));
+        Chef chef = null;
+        try {
+            chef = chefService.findById(Long.parseLong(chefId.toString()));
+        } catch (Exception e){
+            e.printStackTrace();
+
+            resp.sendRedirect("/dish");
+            return;
+        }
 
         context.setVariable("chef", chef);
 
@@ -55,14 +63,18 @@ public class ChefDetailsServlet extends HttpServlet {
         Object chefId = req.getSession().getAttribute("chefId");
 
         if (dishId == null || chefId == null) {
-            resp.sendRedirect("dish");
+            resp.sendRedirect("/dish");
             return;
         }
 
-        Chef chef = chefService.addDishToChef(Long.parseLong(chefId.toString()), dishId);
+        try {
+            Chef chef = chefService.addDishToChef(Long.parseLong(chefId.toString()), dishId);
+            req.getSession().setAttribute("chef", chef);
+            resp.sendRedirect("/chefDetails");
+        } catch (Exception e){
+            e.printStackTrace();
 
-        req.getSession().setAttribute("chef", chef);
-
-        resp.sendRedirect("/chefDetails");
+            resp.sendRedirect("/dish");
+        }
     }
 }
