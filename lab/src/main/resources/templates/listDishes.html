@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="utf-8">
+    <title>Restaurant Chefs - Welcome to Our Restaurant</title>
+    <style>
+        body {
+            width: 800px;
+            margin: auto;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to Our Restaurant</h1>
+</header>
+<main>
+    <h2>Dishes:</h2>
+    <a href="dishes/dish-form">Create new dish</a>
+    <table style="width: 100%; text-align: center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Cuisine</th>
+                <th>Prep time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="dish: ${dishes}">
+                <td th:text="|${dish.getId()}|"></td>
+                <td th:text="|${dish.getName()}|"></td>
+                <td th:text="|${dish.getCuisine()}|"></td>
+                <td th:text="|${dish.getPreparationTime()}|"></td>
+                <td>
+                    <form th:action="@{${'dishes/delete/' + dish.getId()}}" method="get">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <form th:action="@{${'dishes/dish-form/' + dish.getId()}}" method="get">
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

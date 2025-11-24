@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="utf-8">
+    <title>Restaurant Chefs - Welcome to Our Restaurant</title>
+
+    <style>
+        body {
+            width: 800px;
+            margin: auto;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to Our Restaurant</h1>
+</header>
+<main>
+    <form th:action="@{'/dishes/add'}" method="POST">
+        <label>
+            Name:
+            <input type="text" name="name"/>
+        </label>
+        <br/>
+        <label>
+            DishId:
+            <input type="text" name="dishId"/>
+        </label>
+        <br/>
+
+        <label>
+            Cousine:
+            <input type="text" name="cuisine"/>
+        </label>
+        <br/>
+
+        <label>
+            PrepTime:
+            <input type="text" name="preperationTime"/>
+        </label>
+        <br/>
+
+        <input type="submit" value="Submit">
+    </form>
+</main>
+</body>
+</html>

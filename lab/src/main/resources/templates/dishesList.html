@@ -40,7 +40,7 @@
 </header>
 <section>
     <h2>Select dish:</h2>
-    <form action="/chefDetails" method="POST">
+    <form th:action="@{'/chefDetails/{id}' (id=${chef.getId()})}" method="POST">
         <ul style="list-style: none">
             <li th:each="dish: ${dishes}">
                 <input type="radio" name="dishId" th:value="${dish.getDishId()}"/>

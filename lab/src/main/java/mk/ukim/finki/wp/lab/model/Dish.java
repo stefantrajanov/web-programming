@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Dish {
+    private Long id;
     private String dishId;
     private String name;
     private String cuisine;

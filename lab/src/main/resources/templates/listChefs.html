@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Restaurant Chefs - Welcome to Our Restaurant</title>
+
     <style>
         body {
             width: 800px;
@@ -21,7 +22,7 @@
 </header>
 <main>
     <h2>Choose a chef:</h2>
-    <form action="/dish" method="POST">
+    <form th:action="@{'/dishes/add-dish-to-chef'}" th:method="GET">
         <ul style="list-style: none">
             <li th:each="chef: ${chefs}">
                 <input type="radio" name="chefId" th:value="${chef.getId()}"/>
