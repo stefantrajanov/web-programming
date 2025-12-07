@@ -68,7 +68,7 @@ public class ChefDetailsServlet extends HttpServlet {
         }
 
         try {
-            Chef chef = chefService.addDishToChef(Long.parseLong(chefId.toString()), dishId);
+            Chef chef = chefService.addDishToChef(Long.parseLong(chefId.toString()), 1L);
             req.getSession().setAttribute("chef", chef);
             resp.sendRedirect("/chefDetails");
         } catch (Exception e){

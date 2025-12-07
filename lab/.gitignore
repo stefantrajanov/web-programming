@@ -1,3 +1,7 @@
+# MacOS
+.DS_Store
+lab/.DS_Store
+
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar

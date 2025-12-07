@@ -16,18 +16,6 @@ public class DataHolder {
 
     @PostConstruct
     public void init() {
-        chefs = new ArrayList<>();
-        chefs.add(new Chef(1L, "Marko", "Markovski", "Biography for Marko", new ArrayList<>()));
-        chefs.add(new Chef(2L, "Riste", "Ristovski", "Biography for Riste", new ArrayList<>()));
-        chefs.add(new Chef(3L, "Petre", "Petrovski", "Biography for Petre", new ArrayList<>()));
-        chefs.add(new Chef(4L, "Stefan", "Stefanovski", "Biography for Stefan", new ArrayList<>()));
-        chefs.add(new Chef(5L, "Aleksandar", "Aleksov", "Biography for Aleksandar", new ArrayList<>()));
 
-        dishes = new ArrayList<>();
-        dishes.add(new Dish(1L, "D1", "Pizza", "Fine Dining", 10));
-        dishes.add(new Dish(2L, "D2", "Swarma", "Middle east", 15));
-        dishes.add(new Dish(3L, "D3", "Fillet Mignon", "Luxury", 20));
-        dishes.add(new Dish(4L, "D4", "Giro", "Greek", 5));
-        dishes.add(new Dish(5L, "D5", "Tavce Gravce", "Macedonian", 40));
     }
 }

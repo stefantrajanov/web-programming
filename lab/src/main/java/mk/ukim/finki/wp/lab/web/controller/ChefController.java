@@ -29,7 +29,7 @@ public class ChefController {
     }
 
     @PostMapping("/chefDetails/{id}")
-    public String chefDetails(@PathVariable Long id, @RequestParam String dishId){
+    public String chefDetails(@PathVariable Long id, @RequestParam Long dishId){
         this.chefService.addDishToChef(id, dishId);
         return "redirect:/chefDetails/" + id;
     }

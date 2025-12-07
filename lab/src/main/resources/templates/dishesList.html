@@ -43,7 +43,7 @@
     <form th:action="@{'/chefDetails/{id}' (id=${chef.getId()})}" method="POST">
         <ul style="list-style: none">
             <li th:each="dish: ${dishes}">
-                <input type="radio" name="dishId" th:value="${dish.getDishId()}"/>
+                <input type="radio" name="dishId" th:value="${dish.getId()}"/>
                 <label th:text="|${dish.getName()}|"></label>
             </li>
         </ul>

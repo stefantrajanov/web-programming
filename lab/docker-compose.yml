@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  db:
+    # Use the official PostgreSQL image
+    image: postgres:17.4
+    container_name: postgres_dishes_db
+    restart: always
+
+    environment:
+      POSTGRES_DB: dishes
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+
+    # Map container port 5432 to host port 5432
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
