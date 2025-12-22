@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="mk">
+<html lang="mk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <title>Restaurant Chefs - Welcome to Our Restaurant</title>
@@ -21,7 +21,7 @@
 </header>
 <main>
     <h2>Dishes:</h2>
-    <a href="dishes/dish-form">Create new dish</a>
+    <a sec:authorize="hasRole('ADMIN')" href="dishes/dish-form">Create new dish</a>
     <table style="width: 100%; text-align: center">
         <thead>
             <tr>
@@ -39,10 +39,10 @@
                 <td th:text="|${dish.getCuisine()}|"></td>
                 <td th:text="|${dish.getPreparationTime()}|"></td>
                 <td>
-                    <form th:action="@{${'dishes/delete/' + dish.getId()}}" method="get">
-                        <button type="submit">Delete</button>
+                    <form sec:authorize="hasRole('ADMIN')" th:action="@{${'dishes/delete/' + dish.getId()}}" method="get">
+                        <button  type="submit">Delete</button>
                     </form>
-                    <form th:action="@{${'dishes/dish-form/' + dish.getId()}}" method="get">
+                    <form sec:authorize="hasRole('ADMIN')" th:action="@{${'dishes/dish-form/' + dish.getId()}}" method="get">
                         <button type="submit">Update</button>
                     </form>
                 </td>

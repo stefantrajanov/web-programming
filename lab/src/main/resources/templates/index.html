@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="mk">
+<html lang="mk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <title>Restaurant Chefs - Welcome to Our Restaurant</title>
@@ -35,5 +35,10 @@
 <body>
     <a href="/listChefs">List chefs</a>
     <a href="/dishes">List dishes</a>
+
+    <a sec:authorize="isAnonymous()" th:href="@{/login}">Login</a>
+    <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
+        <button type="submit">Logout</button>
+    </form>
 </body>
 </html>
